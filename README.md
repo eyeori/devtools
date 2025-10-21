@@ -48,11 +48,8 @@ DevTools 可以作为命令行工具使用：
 # 指定配置文件
 ./devtools -c config.yaml
 
-# 指定日志配置文件
-./devtools -l log.yaml
-
-# 指定日志目标
-./devtools --logger my_logger
+# 指定日志配置
+./devtools -l LOG_STR
 ```
 
 ### 工具调用
@@ -74,7 +71,7 @@ DevTools 通过标准MCP协议调用具体工具
 
 ## 配置
 
-DevTools 支持通过 YAML 文件进行配置。默认配置文件为 `config.yaml`，日志配置文件为 `log.yaml`。
+DevTools 支持通过 YAML 文件进行配置。默认配置文件为 `config.yaml`。
 
 ## 技术栈
 
