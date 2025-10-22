@@ -152,7 +152,7 @@ fn log_rolling_file_rotation(rolling_file_rotation_str: &str) -> Result<(Rotatio
     let rotation_max_log_files: Vec<&str> = rolling_file_rotation_str.split("#").collect();
     let log_rotation = rotation_max_log_files[0];
     if !log_rotation.is_empty() {
-        result.0 = RotationCfg(&log_rotation).parse()?;
+        result.0 = RotationCfg(log_rotation).parse()?;
     }
     if rotation_max_log_files.len() == 2
         && let max_log_files = rotation_max_log_files[1]

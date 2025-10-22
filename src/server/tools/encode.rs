@@ -61,7 +61,7 @@ impl Server {
         info!("encode::url_decode, id={id}, params={params:?}");
         let result = form_urlencoded::parse(params.url.as_bytes())
             .map(|(k, v)| {
-                if v.len() == 0 {
+                if v.is_empty() {
                     k.to_string()
                 } else {
                     format!("{k}={v}")

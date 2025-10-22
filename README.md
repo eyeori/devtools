@@ -19,6 +19,11 @@ DevTools 提供了多种常用地开发工具，包括：
 - 时间戳转日期时间
 - 日期时间转时间戳
 
+### 文件系统工具
+
+- 读取文件（若是文件，返回文件内容；若是目录，返回目录下的项目列表）
+- 执行路径指定的命令
+
 ### 环境配置工具
 
 - 列出所有本地配置键名
@@ -67,6 +72,7 @@ DevTools 通过标准MCP协议调用具体工具
 - `time::datetime_now` - 获取当前日期时间及时间戳
 - `time::timestamp_to_datetime` - 时间戳转日期时间
 - `time::datetime_to_timestamp` - 日期时间转时间戳
+- `fs::file_operate` - 文件操作（读取或执行）
 - `env::list_config_keys` - 列出所有本地配置键名
 
 ## 配置

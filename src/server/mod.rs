@@ -23,6 +23,7 @@ impl Server {
         tool_router += Self::tool_touter_env();
         tool_router += Self::tool_touter_time();
         tool_router += Self::tool_touter_encode();
+        tool_router += Self::tool_touter_fs();
         tool_router
     }
 
