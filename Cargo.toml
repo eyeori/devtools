@@ -10,7 +10,7 @@ release = { lto = "fat" }
 anyhow = "1.0.100"
 base64 = "0.22.1"
 chrono = "0.4.42"
-clap = { version = "4.5.50", features = ["derive"] }
+clap = { version = "4.5.51", features = ["derive"] }
 config-file = { version = "0.2.3", features = ["yaml"] }
 form_urlencoded = "1.2.2"
 hex = "0.4.3"

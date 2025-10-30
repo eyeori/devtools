@@ -10,7 +10,7 @@ pub struct FileOperateParams {
     /// The operation, which can be "read" or "execute"
     pub operate: String,
 
-    /// The arguments for the operation
+    /// The arguments for the "execute" operation
     pub arguments: Option<String>,
 }
 
