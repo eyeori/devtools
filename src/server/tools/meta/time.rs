@@ -82,9 +82,9 @@ impl DatetimeToTimestampParams {
         self.year() > 0
             && (1..=12).contains(&self.month())
             && (1..=31).contains(&self.day())
-            && (0..24).contains(&self.hour())
-            && (0..60).contains(&self.minute())
-            && (0..60).contains(&self.second())
+            && self.hour() < 24
+            && self.minute() < 60
+            && self.second() < 60
     }
 
     #[inline]

@@ -4,26 +4,21 @@ use rmcp::handler::server::wrapper::Parameters;
 use rmcp::{tool, tool_router, Json};
 use serde_json::json;
 use std::path::Path;
-use tracing::info;
-use ulid::Ulid;
 
 #[tool_router(router = tool_touter_fs, vis = "pub")]
 impl Server {
     #[tool(
-        name = "fs::file_operate",
+        name = "fs.file_operate",
         description = "Operate a file, can be read or execute"
     )]
     fn file_operate(
         &self,
         Parameters(params): Parameters<FileOperateParams>,
     ) -> Json<FileOperateResult> {
-        let id = Ulid::new().to_string();
-        info!("fs::file_operate, id={id}, params={params:?}");
         let path = Path::new(&params.path);
         let operate = params.operate.to_ascii_lowercase();
         let arguments = params.arguments.as_deref();
         let result = file_operate(path, &operate, arguments);
-        info!("fs::file_operate, id={id}, result={result:?}");
         Json(result)
     }
 }

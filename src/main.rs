@@ -24,7 +24,7 @@ async fn run() -> Result<()> {
     let args = Args::parse();
 
     // init log
-    let _guard = logger::init(&args.log_str)?;
+    let _log_guard = logger::init(&args.log_str)?;
 
     // start server
     let server = Server::new(args.config);
