@@ -6,7 +6,6 @@ use anyhow::Result;
 use rmcp::handler::server::tool::ToolRouter;
 use rmcp::model::*;
 use rmcp::{tool_handler, ServerHandler};
-use std::env;
 use std::path::PathBuf;
 use tracing::info;
 
@@ -47,10 +46,8 @@ impl Server {
 #[tool_handler(router = self.tool_router())]
 impl ServerHandler for Server {
     fn get_info(&self) -> ServerInfo {
-        let name = env!("CARGO_PKG_NAME").to_string();
-        let version = env!("CARGO_PKG_VERSION").to_string();
-        ServerInfo {
-            capabilities: ServerCapabilities::builder()
+        ServerInfo::new(
+            ServerCapabilities::builder()
                 .enable_experimental()
                 .enable_logging()
                 .enable_completions()
@@ -65,13 +62,8 @@ impl ServerHandler for Server {
                     list_changed: Some(true),
                 })
                 .build(),
-            server_info: Implementation {
-                name,
-                version,
-                ..Default::default()
-            },
-            ..Default::default()
-        }
+        )
+        .with_server_info(Implementation::from_build_env())
     }
 }
 
