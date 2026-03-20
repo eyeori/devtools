@@ -2,7 +2,7 @@
 name = "devtools"
 version = "1.0.0"
 edition = "2024"
-documentation = "https://eyeori.github.io/devtools"
+documentation = "https://eyeori.xyz/devtools/devtools"
 
 [profile]
 release = { lto = "fat" }

@@ -4,13 +4,11 @@ on:
   push:
     branches: [ main ]
 
-# 设置 GITHUB_TOKEN 的权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许一个并发部署
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -29,10 +27,8 @@ jobs:
       - name: Build documentation
         run: cargo doc --no-deps --release
 
-      - name: Prepare deploy directory
-        run: |
-          cp -r target/doc/devtools/* target/doc/
-          rm -rf target/doc/devtools
+      - name: Add redirect index.html
+        run: echo '<meta http-equiv="refresh" content="0;url=devtools/index.html">' > target/doc/index.html
 
       - name: Fix permissions
         run: chmod -R +r target/doc
