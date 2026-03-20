@@ -2,7 +2,7 @@ name: Deploy Docs
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 # 设置 GITHUB_TOKEN 的权限
 permissions:
@@ -29,8 +29,10 @@ jobs:
       - name: Build documentation
         run: cargo doc --no-deps --release
 
-      - name: Add redirect index.html
-        run: echo '<meta http-equiv="refresh" content="0;url=devtools/index.html">' > target/doc/index.html
+      - name: Prepare deploy directory
+        run: |
+          cp -r target/doc/devtools/* target/doc/
+          rm -rf target/doc/devtools
 
       - name: Fix permissions
         run: chmod -R +r target/doc
